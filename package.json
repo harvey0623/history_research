@@ -1,0 +1,13 @@
+{
+  "name": "history-research",
+  "version": "1.0.0",
+  "description": "歷史研究專案與朝代數據分析工具",
+  "scripts": {
+    "updateData": "node analyze/update.js",
+    "serve": "http-server -a localhost -p 5001 -o /analyze/",
+    "dev": " pnpm updateData && pnpm serve"
+  },
+  "devDependencies": {
+    "http-server": "^14.1.1"
+  }
+}

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>歷史研究專案 - 朝代數據分析</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;700&family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- 側邊欄/標頭 -->
+        <header class="main-header">
+            <div class="logo-area">
+                <span class="logo-icon">🏯</span>
+                <div class="logo-text">
+                    <h1>歷史研究專案</h1>
+                    <p>Historical Research Analytics</p>
+                </div>
+            </div>
+            <div class="system-status">
+                <span class="status-indicator"></span>
+                <span id="update-time">最後更新：載入中...</span>
+            </div>
+        </header>
+
+        <!-- 主內容區 -->
+        <main class="main-content">
+            <!-- 數據概覽卡片 -->
+            <section class="overview-section">
+                <div class="overview-card" id="card-dynasty">
+                    <div class="card-icon">📚</div>
+                    <div class="card-info">
+                        <span class="card-label">研究朝代</span>
+                        <h2 class="card-value" id="val-dynasties">0</h2>
+                    </div>
+                </div>
+                <div class="overview-card" id="card-files">
+                    <div class="card-icon">📄</div>
+                    <div class="card-info">
+                        <span class="card-label">文獻檔案</span>
+                        <h2 class="card-value" id="val-files">0</h2>
+                    </div>
+                </div>
+                <div class="overview-card" id="card-chars">
+                    <div class="card-icon">✍️</div>
+                    <div class="card-info">
+                        <span class="card-label">研究字數</span>
+                        <h2 class="card-value" id="val-chars">0</h2>
+                    </div>
+                </div>
+                <div class="overview-card" id="card-images">
+                    <div class="card-icon">🖼️</div>
+                    <div class="card-info">
+                        <span class="card-label">史料圖片</span>
+                        <h2 class="card-value" id="val-images">0</h2>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 分析核心區 -->
+            <section class="analysis-grid">
+                <!-- 圖表卡片 -->
+                <div class="chart-card-container">
+                    <div class="card-header">
+                        <h3>朝代比重分析圖</h3>
+                        <div class="chart-controls">
+                            <button class="control-btn active" data-metric="fileCount">文件數</button>
+                            <button class="control-btn" data-metric="charCount">字數</button>
+                            <button class="control-btn" data-metric="totalSize">容量 (KB)</button>
+                            <button class="control-btn" data-metric="imageCount">圖片數</button>
+                        </div>
+                    </div>
+                    <div class="chart-body">
+                        <div class="chart-wrapper">
+                            <canvas id="dynastyPieChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 詳細列表卡片 -->
+                <div class="details-card-container">
+                    <div class="card-header">
+                        <h3>朝代細節數據</h3>
+                        <p class="subtitle">點擊朝代可查看詳細文獻清單</p>
+                    </div>
+                    <div class="details-body">
+                        <div class="dynasty-list" id="dynasty-list-container">
+                            <!-- JS 動態插入 -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 彈窗：顯示詳細文獻清單 -->
+            <div id="files-modal" class="modal">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3 id="modal-title">朝代文獻</h3>
+                        <span class="close-btn" id="close-modal">&times;</span>
+                    </div>
+                    <div class="modal-search-container">
+                        <input type="text" id="file-search-input" placeholder="關鍵字搜尋..." autocomplete="off">
+                    </div>
+                    <div class="modal-body">
+                        <table class="files-table">
+                            <thead>
+                                <tr>
+                                    <th>文獻名稱</th>
+                                    <th>字數</th>
+                                    <th>檔案大小</th>
+                                </tr>
+                            </thead>
+                            <tbody id="files-table-body">
+                                <!-- JS 動態插入 -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- 頁尾 -->
+        <footer class="main-footer">
+            <p>歷史研究專案分析工具 &copy; 2026. 基於 Chart.js 構建。</p>
+            <p class="tip">提示：若新增或修改了文獻，請在終端機執行 <code>node analyze/update.js</code> 以更新此圖表數據。</p>
+        </footer>
+    </div>
+
+    <!-- 載入邏輯 -->
+    <script src="app.js"></script>
+</body>
+</html>
