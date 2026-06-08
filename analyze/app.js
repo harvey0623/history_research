@@ -4,15 +4,15 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentMetric = 'fileCount'; // 預設指標：文件數
     let activeChart = null;
 
-    // 定義朝代專屬古典色系
+    // 定義朝代專屬國風古典色系
     const colorPalette = {
-        '漢朝': '#c94a4a',       // 硃砂紅
-        '唐朝': '#d4af37',       // 盛唐金
-        '五代十國': '#2c97a7',    // 石青藍
-        '宋朝': '#3a8e7e',       // 翡翠綠
-        '元朝': '#7a5eb7',       // 黛紫色
-        '明朝': '#d97736',       // 琉璃橙
-        '待研究': '#6e7681'      // 玄石灰
+        '漢朝': '#9c2828',       // 硃砂紅（宮牆紅）
+        '唐朝': '#d49b28',       // 赤金/明黃
+        '五代十國': '#4a7c59',    // 石綠/青苔綠
+        '宋朝': '#5b8c85',       // 天青色/雨過天晴
+        '元朝': '#665577',       // 黛紫/古藤紫
+        '明朝': '#c96828',       // 琉璃橙/柿紅
+        '待研究': '#7a756b'      // 水墨灰/玄石灰
     };
 
     // 如果有未定義的朝代，動態生成顏色
@@ -33,6 +33,43 @@ document.addEventListener('DOMContentLoaded', () => {
         return (bytes / 1024).toFixed(1) + ' KB';
     };
 
+    // 數字遞增動畫效果 (CountUp)
+    const animateCountUp = (element, targetValue, duration = 1200) => {
+        let startTimestamp = null;
+        const target = parseInt(targetValue, 10);
+        if (isNaN(target)) {
+            element.textContent = targetValue;
+            return;
+        }
+
+        const step = (timestamp) => {
+            if (!startTimestamp) startTimestamp = timestamp;
+            const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+            
+            // 使用 easeOutQuart 減速曲線讓動畫結尾更平滑自然
+            const easeProgress = 1 - Math.pow(1 - progress, 4);
+            const currentValue = Math.floor(easeProgress * target);
+            
+            element.textContent = formatNumber(currentValue);
+            
+            if (progress < 1) {
+                window.requestAnimationFrame(step);
+            } else {
+                element.textContent = formatNumber(target);
+            }
+        };
+        
+        window.requestAnimationFrame(step);
+    };
+
+    // 啟動數字 CountUp 動畫
+    const startCountUpAnimations = () => {
+        animateCountUp(document.getElementById('val-dynasties'), summary.totalDynasties);
+        animateCountUp(document.getElementById('val-files'), summary.totalFiles);
+        animateCountUp(document.getElementById('val-chars'), summary.totalChars);
+        animateCountUp(document.getElementById('val-images'), summary.totalImages);
+    };
+
     // 初始化頁面數據
     const initDashboard = () => {
         // 更新時間
@@ -40,11 +77,11 @@ document.addEventListener('DOMContentLoaded', () => {
         const updateDate = new Date(summary.lastUpdated);
         updateTimeEl.textContent = `最後更新：${updateDate.toLocaleString('zh-Hant')}`;
 
-        // 頂部卡片
-        document.getElementById('val-dynasties').textContent = summary.totalDynasties;
-        document.getElementById('val-files').textContent = summary.totalFiles;
-        document.getElementById('val-chars').textContent = formatNumber(summary.totalChars);
-        document.getElementById('val-images').textContent = summary.totalImages;
+        // 頂部卡片設為 0，等待 Loading 結束後再執行動畫
+        document.getElementById('val-dynasties').textContent = '0';
+        document.getElementById('val-files').textContent = '0';
+        document.getElementById('val-chars').textContent = '0';
+        document.getElementById('val-images').textContent = '0';
 
         // 渲染詳細列表
         renderDynastyList();
@@ -114,7 +151,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 datasets: [{
                     data: dataValues,
                     backgroundColor: backgroundColors,
-                    borderColor: '#121824',
+                    borderColor: '#fefcf7', // 使用卡片背景色
                     borderWidth: 2,
                     hoverOffset: 15
                 }]
@@ -126,10 +163,11 @@ document.addEventListener('DOMContentLoaded', () => {
                     legend: {
                         position: 'bottom',
                         labels: {
-                            color: '#90a0b7',
+                            color: '#2b1d11', // 水墨黑文字
                             font: {
-                                family: '"Outfit", "Noto Serif TC"',
-                                size: 12
+                                family: '"Noto Serif TC", "Outfit"',
+                                size: 12,
+                                weight: 'bold'
                             },
                             padding: 15
                         }
@@ -144,10 +182,10 @@ document.addEventListener('DOMContentLoaded', () => {
                                 return ` ${label}: ${formatNumber(value)} (${percentage}%)`;
                             }
                         },
-                        backgroundColor: '#121824',
-                        titleColor: '#d4af37',
-                        bodyColor: '#f0f4f8',
-                        borderColor: 'rgba(201, 160, 99, 0.3)',
+                        backgroundColor: '#fbf9f3', // 絹布白
+                        titleColor: '#8b2626',      // 硃砂紅
+                        bodyColor: '#2b1d11',       // 焦茶水墨黑
+                        borderColor: 'rgba(178, 136, 60, 0.4)', // 鎏金邊框
                         borderWidth: 1,
                         padding: 10
                     }
@@ -281,6 +319,28 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    // 隱藏 Loading 畫面的輔助函數 (確保動畫至少完整播放 1.2 秒，以展示精美效果)
+    const startTime = Date.now();
+    const hideLoading = () => {
+        const loadingOverlay = document.getElementById('loading-overlay');
+        if (!loadingOverlay) return;
+
+        const elapsedTime = Date.now() - startTime;
+        const minDuration = 1200;
+        const delay = Math.max(0, minDuration - elapsedTime);
+
+        setTimeout(() => {
+            loadingOverlay.classList.add('fade-out');
+            
+            // 載入畫面開始淡出、露出儀表板的瞬間，啟動數字滾動動畫
+            startCountUpAnimations();
+            
+            setTimeout(() => {
+                loadingOverlay.style.display = 'none';
+            }, 500);
+        }, delay);
+    };
+
     // 使用 Fetch API 讀取 JSON 檔
     fetch('data.json')
         .then(response => {
@@ -294,9 +354,13 @@ document.addEventListener('DOMContentLoaded', () => {
             dynasties = data.dynasties;
             // 執行初始化
             initDashboard();
+            // 隱藏載入畫面
+            hideLoading();
         })
         .catch(error => {
             console.error('載入資料錯誤:', error);
+            // 隱藏載入畫面以顯示錯誤資訊
+            hideLoading();
             // 本地 file:// 協定的 CORS 提示
             const errorMsg = document.createElement('div');
             errorMsg.style.cssText = 'position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:#c94a4a;color:#fff;padding:1.5rem 2rem;border-radius:10px;text-align:center;z-index:9999;box-shadow:0 10px 30px rgba(0,0,0,0.5);width:90%;max-width:500px;line-height:1.5;';
@@ -307,7 +371,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <p style="font-size:0.85rem;font-weight:bold;text-align:left;border-top:1px solid rgba(255,255,255,0.2);padding-top:0.75rem;">解決方案提示：</p>
                 <ul style="font-size:0.8rem;text-align:left;padding-left:1.2rem;margin-top:0.25rem;opacity:0.9;">
                     <li>使用 VS Code 的 <b>Live Server</b> 插件啟動網頁。</li>
-                    <li>在終端機執行 <code>npx http-server analyze</code> 啟動本地伺服器後，再用網址開啟。</li>
+                    <li>在終端機執行 <code>pnpm run dev</code> 啟動本地伺服器後，再用網址開啟。</li>
                 </ul>
             `;
             document.body.appendChild(errorMsg);
