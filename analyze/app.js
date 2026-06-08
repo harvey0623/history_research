@@ -111,10 +111,6 @@ document.addEventListener('DOMContentLoaded', () => {
         for (const [name, stats] of Object.entries(dynasties)) {
             // 如果該指標數值為 0，則不放入圓餅圖，避免圖表混亂
             let val = stats[metric];
-            if (metric === 'totalSize') {
-                // 將 Size 轉為 KB 顯示
-                val = parseFloat((stats.totalSize / 1024).toFixed(2));
-            }
 
             if (val > 0) {
                 labels.push(name);
@@ -136,7 +132,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const metricTitles = {
             fileCount: '文件數量 (份)',
             charCount: '字數統計 (字)',
-            totalSize: '檔案容量 (KB)',
             imageCount: '圖片數量 (張)'
         };
 
