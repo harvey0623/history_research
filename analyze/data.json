@@ -1,11 +1,11 @@
 {
   "summary": {
-    "totalDynasties": 6,
-    "totalFiles": 78,
-    "totalSize": 358361,
-    "totalChars": 84598,
-    "totalImages": 26,
-    "lastUpdated": "2026-06-08T08:59:31.979Z"
+    "totalDynasties": 8,
+    "totalFiles": 82,
+    "totalSize": 388392,
+    "totalChars": 91489,
+    "totalImages": 27,
+    "lastUpdated": "2026-06-12T06:51:57.537Z"
   },
   "dynasties": {
     "五代十國": {
@@ -137,9 +137,9 @@
       ]
     },
     "明朝": {
-      "fileCount": 59,
-      "totalSize": 288685,
-      "charCount": 64015,
+      "fileCount": 61,
+      "totalSize": 305551,
+      "charCount": 69212,
       "imageCount": 13,
       "files": [
         {
@@ -211,8 +211,8 @@
         {
           "name": "明清宮鬥比較",
           "path": "明朝/制度/明清宮鬥比較.md",
-          "size": 5988,
-          "chars": 1996
+          "size": 6047,
+          "chars": 2043
         },
         {
           "name": "殉葬制",
@@ -291,6 +291,12 @@
           "path": "明朝/皇帝/朱厚照.md",
           "size": 5054,
           "chars": 794
+        },
+        {
+          "name": "朱厚熜",
+          "path": "明朝/皇帝/朱厚熜.md",
+          "size": 10970,
+          "chars": 3190
         },
         {
           "name": "朱棣",
@@ -387,6 +393,12 @@
           "path": "明朝/重大事件/嘉靖時期/庚戌之變.md",
           "size": 6233,
           "chars": 638
+        },
+        {
+          "name": "永樂大典重錄與流散",
+          "path": "明朝/重大事件/嘉靖時期/永樂大典重錄與流散.md",
+          "size": 5837,
+          "chars": 1960
         },
         {
           "name": "朱棣征安南",
@@ -498,6 +510,20 @@
         }
       ]
     },
+    "清朝": {
+      "fileCount": 1,
+      "totalSize": 5363,
+      "charCount": 1063,
+      "imageCount": 0,
+      "files": [
+        {
+          "name": "宮鬥",
+          "path": "清朝/宮鬥.md",
+          "size": 5363,
+          "chars": 1063
+        }
+      ]
+    },
     "漢朝": {
       "fileCount": 3,
       "totalSize": 9198,
@@ -521,6 +547,20 @@
           "path": "漢朝/重大事件/七國之亂.md",
           "size": 3298,
           "chars": 613
+        }
+      ]
+    },
+    "通史": {
+      "fileCount": 1,
+      "totalSize": 7802,
+      "charCount": 631,
+      "imageCount": 1,
+      "files": [
+        {
+          "name": "外戚",
+          "path": "通史/外戚.md",
+          "size": 7802,
+          "chars": 631
         }
       ]
     }
