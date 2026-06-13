@@ -2,10 +2,10 @@
   "summary": {
     "totalDynasties": 8,
     "totalFiles": 82,
-    "totalSize": 388392,
+    "totalSize": 387993,
     "totalChars": 91489,
     "totalImages": 27,
-    "lastUpdated": "2026-06-12T06:51:57.537Z"
+    "lastUpdated": "2026-06-13T01:13:32.010Z"
   },
   "dynasties": {
     "五代十國": {
@@ -86,7 +86,7 @@
     },
     "唐朝": {
       "fileCount": 5,
-      "totalSize": 17071,
+      "totalSize": 17014,
       "charCount": 4775,
       "imageCount": 10,
       "files": [
@@ -99,7 +99,7 @@
         {
           "name": "府兵制",
           "path": "唐朝/制度/府兵制.md",
-          "size": 4266,
+          "size": 4209,
           "chars": 1275
         },
         {
@@ -138,7 +138,7 @@
     },
     "明朝": {
       "fileCount": 61,
-      "totalSize": 305551,
+      "totalSize": 305371,
       "charCount": 69212,
       "imageCount": 13,
       "files": [
@@ -169,7 +169,7 @@
         {
           "name": "內閣制",
           "path": "明朝/制度/內閣制.md",
-          "size": 5122,
+          "size": 5048,
           "chars": 1523
         },
         {
@@ -235,7 +235,7 @@
         {
           "name": "言官",
           "path": "明朝/制度/言官.md",
-          "size": 6366,
+          "size": 6307,
           "chars": 2091
         },
         {
@@ -295,7 +295,7 @@
         {
           "name": "朱厚熜",
           "path": "明朝/皇帝/朱厚熜.md",
-          "size": 10970,
+          "size": 11039,
           "chars": 3190
         },
         {
@@ -349,7 +349,7 @@
         {
           "name": "嚴嵩",
           "path": "明朝/角色/嚴嵩.md",
-          "size": 8979,
+          "size": 8905,
           "chars": 903
         },
         {
@@ -379,25 +379,25 @@
         {
           "name": "壬寅宮變",
           "path": "明朝/重大事件/嘉靖時期/壬寅宮變.md",
-          "size": 8634,
+          "size": 8561,
           "chars": 2851
         },
         {
           "name": "大禮儀",
           "path": "明朝/重大事件/嘉靖時期/大禮儀.md",
-          "size": 4834,
+          "size": 4769,
           "chars": 1613
         },
         {
           "name": "庚戌之變",
           "path": "明朝/重大事件/嘉靖時期/庚戌之變.md",
-          "size": 6233,
+          "size": 6300,
           "chars": 638
         },
         {
           "name": "永樂大典重錄與流散",
           "path": "明朝/重大事件/嘉靖時期/永樂大典重錄與流散.md",
-          "size": 5837,
+          "size": 5878,
           "chars": 1960
         },
         {
@@ -451,7 +451,7 @@
         {
           "name": "南北榜案",
           "path": "明朝/重大事件/洪武時期/南北榜案.md",
-          "size": 4277,
+          "size": 4226,
           "chars": 1159
         },
         {
@@ -505,21 +505,21 @@
         {
           "name": "隆慶議和",
           "path": "明朝/重大事件/隆慶時期/隆慶議和.md",
-          "size": 2808,
+          "size": 2847,
           "chars": 408
         }
       ]
     },
     "清朝": {
       "fileCount": 1,
-      "totalSize": 5363,
+      "totalSize": 5283,
       "charCount": 1063,
       "imageCount": 0,
       "files": [
         {
           "name": "宮鬥",
           "path": "清朝/宮鬥.md",
-          "size": 5363,
+          "size": 5283,
           "chars": 1063
         }
       ]
@@ -552,14 +552,14 @@
     },
     "通史": {
       "fileCount": 1,
-      "totalSize": 7802,
+      "totalSize": 7720,
       "charCount": 631,
       "imageCount": 1,
       "files": [
         {
           "name": "外戚",
           "path": "通史/外戚.md",
-          "size": 7802,
+          "size": 7720,
           "chars": 631
         }
       ]
