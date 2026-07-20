@@ -137,17 +137,11 @@
       ]
     },
     "明朝": {
-      "fileCount": 61,
-      "totalSize": 305371,
-      "charCount": 69212,
+      "fileCount": 60,
+      "totalSize": 301245,
+      "charCount": 67988,
       "imageCount": 13,
       "files": [
-        {
-          "name": "仁宣之治",
-          "path": "明朝/仁宣之治.md",
-          "size": 4126,
-          "chars": 1224
-        },
         {
           "name": "三權分立",
           "path": "明朝/制度/三權分立.md",
